@@ -96,3 +96,23 @@ Execute the controler in swagger and observe the response in preview
 
 
 ## Section 2: Web API-.NET7
+MVC is a software design pattern into 3 interconnected elements.
+Model = data 
+
+Example : 
+
+    public class Character 
+    {
+        public int Id {get; set;} = 0;
+        public string Name {get;set;} = "Frodo";
+        public int HitPoints {get;set;} = 100;
+    }
+
+View = UI (User Interface) 
+model updates the view 
+
+Controller - does the actual work 
+
+Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
+
+
