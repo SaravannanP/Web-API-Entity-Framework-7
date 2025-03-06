@@ -97,22 +97,221 @@ Execute the controler in swagger and observe the response in preview
 
 ## Section 2: Web API-.NET7
 MVC is a software design pattern into 3 interconnected elements.
+
 Model = data 
+
 
 Example : 
 
     public class Character 
     {
-        public int Id {get; set;} = 0;
-        public string Name {get;set;} = "Frodo";
-        public int HitPoints {get;set;} = 100;
+        public int Id { get; set; }
+        // initialised by default to Frodo 
+        // If no default value for name
+        // public string? Name  {get;set} (For non nullable property <nullable> in .csproj) 
+        public string Name { get; set; } = "Frodo";
+        public int HitPoints { get; set; } = 100;
+        
+        public int Strength { get; set; } = 10;
+        
+        public int Defense { get; set; } = 10;
+        
+        public int Intelligence { get; set; } = 10;
+        
     }
 
-View = UI (User Interface) 
+View = UI (User Interface)
+
 model updates the view 
 
 Controller - does the actual work 
 
 Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
 
+
+## Section 2 Video 9 
+
+Create a Models folder 
+    - Create a cs class called Character.js 
+    - Create some properties 
+
+Character.js 
+
+    namespace WebApplication2.Models
+    {
+        public class Character
+        {
+            public int Id { get; set; }
+            // initialised by default to Frodo 
+            // If no default value for name
+            // public string? Name  {get;set} (For non nullable property <nullable> in .csproj) 
+            public string Name { get; set; } = "Frodo";
+            public int HitPoints { get; set; } = 100;
+    
+            public int Strength { get; set; } = 10;
+    
+            public int Defense { get; set; } = 10;
+    
+            public int Intelligence { get; set; } = 10;
+        }
+    }
+
+Under Models folder
+    - Create RPGClass.cs for enum to be used as class property in Character.cs  
+
+RPGClass.cs 
+
+    namespace WebApplication2.Models
+    {
+        public enum RpgClass
+        {
+            Knight = 1,
+    
+            Mage = 2, 
+    
+            Cleric = 3,
+        }
+    }
+
+Under Models folder 
+    - Upadate Chracter.cs accordingly and set default class property 
+
+Character.cs 
+
+    namespace WebApplication2.Models
+    {
+        public class Character
+        {
+            public int Id { get; set; }
+            // initialised by default to Frodo 
+            // If no default value for name
+            // public string? Name  {get;set} (For non nullable property <nullable> in .csproj) 
+            public string Name { get; set; } = "Frodo";
+            public int HitPoints { get; set; } = 100;
+    
+            public int Strength { get; set; } = 10;
+    
+            public int Defense { get; set; } = 10;
+    
+            public int Intelligence { get; set; } = 10;
+    
+    
+            // NEW RPG class property for that an Enum is required 
+            // Created RPGClass.cs in Models folder first 
+            // Set to Knight as default 
+            public RpgClass RpgClass { get; set; } = RpgClass.Knight;
+    
+        }
+    }
+
+Under Controller Folder 
+    - Create CharacterController.cs with no View support(Derive from ControllerBase)
+    - Ensure Microsoft.ASPNetCore.MVC reference which is required for controller classes 
+
+
+ChracterController.cs 
+
+    using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
+
+    namespace WebApplication2.Controllers
+    {
+        // NOTE: Deriving from Controller class mean there is View support 
+        //       Deriving from ControllerBase class means no View support 
+        public class CharacterController : ControllerBase
+        {
+            
+        }
+    }
+
+Under controller Folder 
+    - Add attributes to CharacterController.cs 
+    - Api Controller attribute 
+    - Route attribute
+
+
+CharacterController.cs
+
+    using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
+
+    namespace WebApplication2.Controllers
+    {
+        // NOTE: Deriving from Controller class mean there is View support 
+        //       Deriving from ControllerBase class means no View support 
+    
+        [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+        [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+        public class CharacterController : ControllerBase
+        {
+            
+        }
+    }
+
+Under controller Folder 
+    - Add RPG models reference to CharacterController.cs 
+
+CharacterController.cs 
+
+    using Microsoft.AspNetCore.Mvc;// Reference for Controller class
+    // can include directive at the top like (global using WebApplication2.Models;)
+    // or can be placed in Program.cs (global using  WebApplication2.Models;)
+    // or can create a seperate class just for using directives 
+    // using WebApplication2.Models;// Reference Character class 
+    
+    
+    namespace WebApplication2.Controllers
+    {
+        // NOTE: Deriving from Controller class mean there is View support 
+        //       Deriving from ControllerBase class means no View support 
+
+    [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+    [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+    public class CharacterController : ControllerBase
+    {
+        // Add RPG models referece  
+        private static Character knight = new Character();
+    }
+    }
+
+
+Under Controller Folder 
+    - Add HTTP Get method 
+
+CharacterController.cs 
+
+            
+    using Microsoft.AspNetCore.Mvc;// Reference for Controller class
+    // can include directive at the top like (global using WebApplication2.Models;)
+    // or can be placed in Program.cs (global using  WebApplication2.Models;)
+    // or can create a seperate class just for using directives 
+    // using WebApplication2.Models;// Reference Character class 
+
+    namespace WebApplication2.Controllers
+    {
+        // NOTE: Deriving from Controller class mean there is View support 
+        //       Deriving from ControllerBase class means no View support 
+    
+        [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+        [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+        public class CharacterController : ControllerBase
+        {
+            // Add RPG models referece  
+            private static Character knight = new Character();
+    
+            // Implment get method to recieve game character
+            // IActionResult enables forwarding of specific HTTP codes to client with data requested 
+    
+            [HttpGet] // Indicates method meant to handle HTTP GET requests 
+            public IActionResult Get()
+            {
+                // Status code 200 with mock Character 
+                // return BadRequest(Knight); 400
+                // return NotFound(Knight); 404 
+                // return NotAllowed(Knight); 405 
+                // return Ok(new {message = "Hello world"}); 
+                return Ok(knight);
+            }
+        }
+    }
+
+            
 
