@@ -313,8 +313,8 @@ CharacterController.cs
         }
     }
 
-            
+
 Under Controller Folder 
-    - Update Get method from IActionResult to ActionResult 
+        - Update Get method from IActionResult to ActionResult 
 
 
