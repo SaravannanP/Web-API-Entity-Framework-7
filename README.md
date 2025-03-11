@@ -48,7 +48,7 @@ app functionality
 Services are registerd here to be consumed in the web service via dependency injection 
 
 This class creates apps request processing pipeline
-  - Specify how the app responds to HTTP requests
+    - Specify how the app responds to HTTP requests
 The .Use extension methods (UseHttpsRedirection(),UseAuthorization()) signify adding middleware components to request pipeline.
 
 
@@ -275,6 +275,8 @@ CharacterController.cs
 
 Under Controller Folder 
     - Add HTTP Get method 
+    
+NOTE: [HttpGet] is required else there will be a failed load API definition 
 
 CharacterController.cs 
 
@@ -313,8 +315,15 @@ CharacterController.cs
         }
     }
 
+NOTE: Schemas Wont appear in swagger 
 
 Under Controller Folder 
-        - Update Get method from IActionResult to ActionResult 
+        - Update Get method from IActionResult to ActionResult for schema in swagger 
+
+
+
+
+
+
 
 
