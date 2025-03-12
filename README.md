@@ -15,7 +15,7 @@ in integrated terminal in vscode:
 or use VS template: WEB api 
 
 ### Program.cs
-
+```csharp 
       var builder = WebApplication.CreateBuilder(args);
 
       // Add services to the container.
@@ -42,6 +42,8 @@ or use VS template: WEB api
       app.MapControllers();
       
       app.Run();
+```
+
 Contains the app services and is a reusable component that provides 
 app functionality 
 
@@ -54,6 +56,7 @@ The .Use extension methods (UseHttpsRedirection(),UseAuthorization()) signify ad
 
 ### WeatherForecastController.cs
 
+```csharp 
     using Microsoft.AspNetCore.Mvc;
 
     namespace WebApplication2.Controllers
@@ -87,6 +90,7 @@ The .Use extension methods (UseHttpsRedirection(),UseAuthorization()) signify ad
           }
         }
      }
+```
 
 NOTE: Routing attribute Route which defines how to access the controller
 
@@ -102,7 +106,7 @@ Model = data
 
 
 Example : 
-
+```csharp 
     public class Character 
     {
         public int Id { get; set; }
@@ -119,7 +123,7 @@ Example :
         public int Intelligence { get; set; } = 10;
         
     }
-
+```
 View = UI (User Interface)
 
 model updates the view 
@@ -136,7 +140,7 @@ Create a Models folder
     - Create some properties 
 
 Character.js 
-
+```csharp 
     namespace WebApplication2.Models
     {
         public class Character
@@ -155,12 +159,13 @@ Character.js
             public int Intelligence { get; set; } = 10;
         }
     }
-
+```
 Under Models folder
     - Create RPGClass.cs for enum to be used as class property in Character.cs  
 
 RPGClass.cs 
 
+```csharp 
     namespace WebApplication2.Models
     {
         public enum RpgClass
@@ -172,12 +177,14 @@ RPGClass.cs
             Cleric = 3,
         }
     }
+```
 
 Under Models folder 
     - Upadate Chracter.cs accordingly and set default class property 
 
 Character.cs 
 
+```csharp 
     namespace WebApplication2.Models
     {
         public class Character
@@ -203,6 +210,7 @@ Character.cs
     
         }
     }
+```
 
 Under Controller Folder 
     - Create CharacterController.cs with no View support(Derive from ControllerBase)
@@ -211,6 +219,7 @@ Under Controller Folder
 
 ChracterController.cs 
 
+```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
 
     namespace WebApplication2.Controllers
@@ -222,7 +231,7 @@ ChracterController.cs
             
         }
     }
-
+```
 Under controller Folder 
     - Add attributes to CharacterController.cs 
     - Api Controller attribute 
@@ -230,7 +239,7 @@ Under controller Folder
 
 
 CharacterController.cs
-
+```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
 
     namespace WebApplication2.Controllers
@@ -245,12 +254,13 @@ CharacterController.cs
             
         }
     }
-
+```
 Under controller Folder 
     - Add RPG models reference to CharacterController.cs 
 
 CharacterController.cs 
 
+```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class
     // can include directive at the top like (global using WebApplication2.Models;)
     // or can be placed in Program.cs (global using  WebApplication2.Models;)
@@ -272,7 +282,7 @@ CharacterController.cs
     }
     }
 
-
+```
 Under Controller Folder 
     - Add HTTP Get method 
     
@@ -280,7 +290,7 @@ NOTE: [HttpGet] is required else there will be a failed load API definition
 
 CharacterController.cs 
 
-            
+```csharp            
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class
     // can include directive at the top like (global using WebApplication2.Models;)
     // or can be placed in Program.cs (global using  WebApplication2.Models;)
@@ -314,11 +324,15 @@ CharacterController.cs
             }
         }
     }
-
+```
 NOTE: Schemas Wont appear in swagger 
 
 Under Controller Folder 
         - Update Get method from IActionResult to ActionResult for schema in swagger 
+
+
+
+
 
 
 
