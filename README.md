@@ -332,13 +332,64 @@ NOTE: Schemas Wont appear in swagger
 - Update Get method from IActionResult to ActionResult for schema in swagger 
 
 
+ChracterController.cs
+
+```csharp
+using Microsoft.AspNetCore.Mvc;// Reference for Controller class
+// can include directive at the top like (global using WebApplication2.Models;)
+// or can be placed in Program.cs (global using  WebApplication2.Models;)
+// or can create a seperate class just for using directives 
+// using WebApplication2.Models;// Reference Character class 
 
 
+namespace WebApplication2.Controllers
+{
+    // NOTE: Deriving from Controller class mean there is View support 
+    //       Deriving from ControllerBase class means no View support 
 
+    [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+    [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+    public class CharacterController : ControllerBase
+    {
+        // Add RPG models referece  
+        private static Character knight = new Character();
 
+        // Implment get method to recieve game character
+        // IActionResult enables forwarding of specific HTTP codes to client with data requested 
 
+        [HttpGet] // Indicates method meant to handle HTTP GET requests 
+        public ActionResult<Character> Get() // To display schemas in swagger 
+        {
+            // Status code 200 with mock Character 
+            // return BadRequest(Knight); 400
+            // return NotFound(Knight); 404 
+            // return NotAllowed(Knight); 405 
+            // return Ok(new {message = "Hello world"}); 
+            return Ok(knight);
+        }
+    }
+}
+```
 
+### Under Models Folder 
+- Update RPGclass.cs with [JsonConverter(typeof(JsonStringEnumConverter))] attribute
 
+RPGClass.cs 
+```csharp
+using System.Text.Json.Serialization; // directive added for Json Serialization 
 
+namespace WebApplication2.Models
+{
+    // Since only numbers are shown instead of RPG class name in the swagger schema
+    // Observe in swagger schema RPGclass that knight,mage,Cleric is seen in enum  
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum RpgClass
+    {
+        Knight = 1,
 
+        Mage = 2, 
 
+        Cleric = 3,
+    }
+}
+```
