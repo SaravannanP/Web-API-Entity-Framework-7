@@ -50,7 +50,8 @@ app functionality
 Services are registerd here to be consumed in the web service via dependency injection 
 
 This class creates apps request processing pipeline
-    - Specify how the app responds to HTTP requests
+- Specify how the app responds to HTTP requests
+  
 The .Use extension methods (UseHttpsRedirection(),UseAuthorization()) signify adding middleware components to request pipeline.
 
 
@@ -94,8 +95,9 @@ The .Use extension methods (UseHttpsRedirection(),UseAuthorization()) signify ad
 
 NOTE: Routing attribute Route which defines how to access the controller
 
-In chrome press F12 > network > Fetch/XHR ( XHR = XML HTTP Request) 
-Execute the controler in swagger and observe the response in preview 
+In chrome press F12 > network > Fetch/XHR ( XHR = XML HTTP Request)
+
+Execute the controller in swagger and observe the response in preview 
 
 
 
@@ -135,9 +137,9 @@ Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
 
 ## Section 2 Video 9 
 
-Create a Models folder 
-    - Create a cs class called Character.js 
-    - Create some properties 
+### Create a Models folder 
+- Create a cs class called Character.js 
+- Create some properties 
 
 Character.js 
 ```csharp 
@@ -160,8 +162,8 @@ Character.js
         }
     }
 ```
-Under Models folder
-    - Create RPGClass.cs for enum to be used as class property in Character.cs  
+### Under Models folder
+- Create RPGClass.cs for enum to be used as class property in Character.cs  
 
 RPGClass.cs 
 
@@ -179,8 +181,8 @@ RPGClass.cs
     }
 ```
 
-Under Models folder 
-    - Upadate Chracter.cs accordingly and set default class property 
+### Under Models folder 
+- Upadate Chracter.cs accordingly and set default class property 
 
 Character.cs 
 
@@ -212,10 +214,9 @@ Character.cs
     }
 ```
 
-Under Controller Folder 
-    - Create CharacterController.cs with no View support(Derive from ControllerBase)
-    - Ensure Microsoft.ASPNetCore.MVC reference which is required for controller classes 
-
+### Under Controller Folder 
+- Create CharacterController.cs with no View support(Derive from ControllerBase)
+- Ensure Microsoft.ASPNetCore.MVC reference which is required for controller classes 
 
 ChracterController.cs 
 
@@ -232,10 +233,10 @@ ChracterController.cs
         }
     }
 ```
-Under controller Folder 
-    - Add attributes to CharacterController.cs 
-    - Api Controller attribute 
-    - Route attribute
+### Under controller Folder 
+- Add attributes to CharacterController.cs 
+- Api Controller attribute 
+- Route attribute
 
 
 CharacterController.cs
@@ -255,8 +256,8 @@ CharacterController.cs
         }
     }
 ```
-Under controller Folder 
-    - Add RPG models reference to CharacterController.cs 
+### Under controller Folder 
+- Add RPG models reference to CharacterController.cs 
 
 CharacterController.cs 
 
@@ -283,8 +284,8 @@ CharacterController.cs
     }
 
 ```
-Under Controller Folder 
-    - Add HTTP Get method 
+### Under Controller Folder 
+- Add HTTP Get method 
     
 NOTE: [HttpGet] is required else there will be a failed load API definition 
 
@@ -327,8 +328,8 @@ CharacterController.cs
 ```
 NOTE: Schemas Wont appear in swagger 
 
-Under Controller Folder 
-        - Update Get method from IActionResult to ActionResult for schema in swagger 
+### Under Controller Folder 
+- Update Get method from IActionResult to ActionResult for schema in swagger 
 
 
 
