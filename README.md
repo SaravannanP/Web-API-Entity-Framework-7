@@ -393,6 +393,7 @@ namespace WebApplication2.Models
     }
 }
 ```
+Section 2: Video 11 : First steps with attribute routing  
 ### Under controller Folder
 - Update private static character to return a list
 - Update get method to return a singular character or all character
