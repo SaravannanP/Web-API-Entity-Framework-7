@@ -141,7 +141,7 @@ Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
 - Create a cs class called Character.js 
 - Create some properties 
 
-Character.js 
+### Character.js 
 ```csharp 
     namespace WebApplication2.Models
     {
@@ -165,7 +165,7 @@ Character.js
 ### Under Models folder
 - Create RPGClass.cs for enum to be used as class property in Character.cs  
 
-RPGClass.cs 
+### RPGClass.cs 
 
 ```csharp 
     namespace WebApplication2.Models
@@ -184,7 +184,7 @@ RPGClass.cs
 ### Under Models folder 
 - Upadate Chracter.cs accordingly and set default class property 
 
-Character.cs 
+### Character.cs 
 
 ```csharp 
     namespace WebApplication2.Models
@@ -218,7 +218,7 @@ Character.cs
 - Create CharacterController.cs with no View support(Derive from ControllerBase)
 - Ensure Microsoft.ASPNetCore.MVC reference which is required for controller classes 
 
-ChracterController.cs 
+### ChracterController.cs 
 
 ```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
@@ -239,7 +239,7 @@ ChracterController.cs
 - Route attribute
 
 
-CharacterController.cs
+### CharacterController.cs
 ```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class 
 
@@ -259,7 +259,7 @@ CharacterController.cs
 ### Under controller Folder 
 - Add RPG models reference to CharacterController.cs 
 
-CharacterController.cs 
+### CharacterController.cs 
 
 ```csharp 
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class
@@ -289,7 +289,7 @@ CharacterController.cs
     
 NOTE: [HttpGet] is required else there will be a failed load API definition 
 
-CharacterController.cs 
+### CharacterController.cs 
 
 ```csharp            
     using Microsoft.AspNetCore.Mvc;// Reference for Controller class
@@ -332,7 +332,7 @@ NOTE: Schemas Wont appear in swagger
 - Update Get method from IActionResult to ActionResult for schema in swagger 
 
 
-ChracterController.cs
+### CharacterController.cs
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;// Reference for Controller class
@@ -374,7 +374,7 @@ namespace WebApplication2.Controllers
 ### Under Models Folder 
 - Update RPGclass.cs with [JsonConverter(typeof(JsonStringEnumConverter))] attribute
 
-RPGClass.cs 
+### RPGClass.cs 
 ```csharp
 using System.Text.Json.Serialization; // directive added for Json Serialization 
 
@@ -393,7 +393,7 @@ namespace WebApplication2.Models
     }
 }
 ```
-Section 2: Video 11 : First steps with attribute routing  
+## Section 2: Video 11 : First steps with attribute routing  
 ### Under controller Folder
 - Update private static character to return a list
 - Update get method to return a singular character or all character
@@ -442,6 +442,6 @@ namespace WebApplication2.Controllers
 
 ```
 
-Section 2: Video 12 : Routing with parameters 
+## Section 2: Video 12 : Routing with parameters 
 
 
