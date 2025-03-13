@@ -393,3 +393,50 @@ namespace WebApplication2.Models
     }
 }
 ```
+### Under controller Folder
+- Update private static character to return a list
+- Update get method to return a singular character or all character
+
+```csharp
+using Microsoft.AspNetCore.Mvc;// Reference for Controller class
+// can include directive at the top like (global using WebApplication2.Models;)
+// or can be placed in Program.cs (global using  WebApplication2.Models;)
+// or can create a seperate class just for using directives 
+// using WebApplication2.Models;// Reference Character class 
+
+
+namespace WebApplication2.Controllers
+{
+    // NOTE: Deriving from Controller class mean there is View support 
+    //       Deriving from ControllerBase class means no View support 
+
+    [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+    [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+    public class CharacterController : ControllerBase
+    {
+        // Add RPG models reference  
+        // private static Character knight = new Character();
+        private static List<Character> characters = new List<Character>
+        {
+            // Object initialize 
+            new Character(),
+            new Character{ Name = "Sam"}
+        };
+
+        // since returning complete list of characters return type has to be an actionresult of characters
+        [HttpGet("GetAll")]
+        public ActionResult <List<Character>> Get()
+        {
+            return Ok(characters);
+        }
+
+        [HttpGet]
+        public ActionResult<Character> GetSingle()
+        {
+            return Ok(characters[0]);
+        }
+    }
+}
+
+
+```
