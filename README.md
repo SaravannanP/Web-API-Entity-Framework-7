@@ -444,4 +444,70 @@ namespace WebApplication2.Controllers
 
 ## Section 2: Video 12 : Routing with parameters 
 
+```csharp
+
+using Microsoft.AspNetCore.Mvc;// Reference for Controller class
+// can include directive at the top like (global using WebApplication2.Models;)
+// or can be placed in Program.cs (global using  WebApplication2.Models;)
+// or can create a seperate class just for using directives 
+// using WebApplication2.Models;// Reference Character class 
+
+
+namespace WebApplication2.Controllers
+{
+    // NOTE: Deriving from Controller class mean there is View support 
+    //       Deriving from ControllerBase class means no View support 
+
+    [ApiController] // Enables attribute routing and automatic HTTP 400 responses
+    [Route("api/[controller]")] // enables sourcing for specific controller (api/Character)
+    public class CharacterController : ControllerBase
+    {
+        // Add RPG models reference  
+        // private static Character knight = new Character();
+        private static List<Character> characters = new List<Character>
+        {
+            // Object initialize 
+            new Character(),
+            new Character{ Id = 1,Name = "Sam"}
+        };
+
+        // since returning complete list of characters return type has to be an actionresult of characters
+        [HttpGet("GetAll")]
+        public ActionResult <List<Character>> Get()
+        {
+            return Ok(characters);
+        }
+
+
+        // The web service knows the id is the value of the actual Id parameter 
+        [HttpGet("{id}")]
+        // This method returns first character where character equates to given Id
+        public ActionResult<Character> GetSingle(int id)
+        {
+            // first or deafult and lambda expression
+            // c for character 
+            return Ok(characters.FirstOrDefault(c => c.Id == id));
+        }
+    }
+}
+
+```
+## Section 2 : Video 13 - HTTPP Request Methods Explained
+
+HTTP = Hypertext Transfer Protocol 
+- Set of request methods indicating desire action for given resource
+- 9 request methods but GET,POST,PUT,DELETE most common
+
+HTTP Request Methods 
+- GET method request representation of specified resource (recieve)                        -READ
+- POST method submits entity to resource causing change in state or server side effects (add or create new obj) -CREATE
+- PUT method replaces all current representations of resource with request payload (update object and soft deletes) -UPDATE 
+- DELETE method delete resource -DELETE
+  
+## Section 2 : Video 14 - 
+
+Creating a new controller method to add a new character 
+- Client sends JSON obj to service > service creates new character based on JSON data
+
+ 
 
