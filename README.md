@@ -135,7 +135,7 @@ Controller - does the actual work
 Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
 
 
-## Section 2 Video 9 
+## Section 2 : Video 9 - New Models
 
 ### Create a Models folder 
 - Create a cs class called Character.js 
@@ -393,7 +393,7 @@ namespace WebApplication2.Models
     }
 }
 ```
-## Section 2: Video 11 : First steps with attribute routing  
+## Section 2: Video 11 - First steps with attribute routing  
 ### Under controller Folder
 - Update private static character to return a list
 - Update get method to return a singular character or all character
@@ -442,7 +442,7 @@ namespace WebApplication2.Controllers
 
 ```
 
-## Section 2: Video 12 : Routing with parameters 
+## Section 2: Video 12 - Routing with parameters 
 
 ```csharp
 
