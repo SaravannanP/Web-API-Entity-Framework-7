@@ -398,6 +398,8 @@ namespace WebApplication2.Models
 - Update private static character to return a list
 - Update get method to return a singular character or all character
 
+### CharacterController.cs 
+
 ```csharp
 using Microsoft.AspNetCore.Mvc;// Reference for Controller class
 // can include directive at the top like (global using WebApplication2.Models;)
@@ -443,6 +445,8 @@ namespace WebApplication2.Controllers
 ```
 
 ## Section 2: Video 12 - Routing with parameters 
+
+### CharacterController.cs 
 
 ```csharp
 
