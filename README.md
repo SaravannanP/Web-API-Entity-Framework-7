@@ -504,7 +504,7 @@ HTTP Request Methods
 - PUT method replaces all current representations of resource with request payload (update object and soft deletes) -UPDATE 
 - DELETE method delete resource -DELETE
   
-## Section 2 : Video 14 - 
+## Section 2 : Video 14 - Add a New Character with POST
 
 Creating a new controller method to add a new character 
 - Client sends JSON obj to service > service creates new character based on JSON data
