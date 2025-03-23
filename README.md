@@ -141,7 +141,7 @@ Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
 - Create a cs class called Character.js 
 - Create some properties 
 
-### Character.js 
+### Character.cs 
 ```csharp 
     namespace WebApplication2.Models
     {
