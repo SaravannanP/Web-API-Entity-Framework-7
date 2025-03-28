@@ -101,7 +101,8 @@ Execute the controller in swagger and observe the response in preview
 
 
 
-## Section 2: Web API-.NET7
+## Section 2: Video 8 - The Model-View-Controller (MVC) Pattern
+
 MVC is a software design pattern into 3 interconnected elements.
 
 Model = data 
@@ -213,7 +214,7 @@ Get image from Section 2 lesson 8. The Model-View-Controller(MVC) Pattern
         }
     }
 ```
-
+## Section 2 : Video 10 - New Controller & GET a New Character
 ### Under Controller Folder 
 - Create CharacterController.cs with no View support(Derive from ControllerBase)
 - Ensure Microsoft.ASPNetCore.MVC reference which is required for controller classes 
