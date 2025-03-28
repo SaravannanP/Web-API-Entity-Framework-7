@@ -497,7 +497,7 @@ namespace WebApplication2.Controllers
 }
 
 ```
-## Section 2 : Video 13 - HTTPP Request Methods Explained
+## Section 2 : Video 13 - HTTP Request Methods Explained
 
 HTTP = Hypertext Transfer Protocol 
 - Set of request methods indicating desire action for given resource
